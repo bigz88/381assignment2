@@ -25,10 +25,15 @@ def func2(array, start, end):
     array[start], array[high] = array[high], array[start]
     return high
 
+time_list = []
 f = open("ex2.json")
 data = json.load(f)
-for i in range(len(data) + 1):
-    func_time = timeit.timeit(lambda : func1(data[i], 0, len(data[i]) - 1), number=10)
-    print(func_time)
-    plt.scatter(i,func_time)
+for i in range(len(data)):
+    func_time = timeit.timeit(lambda : func1(data[i], 0, len(data[i])-1), number=100)
+    time_list.append(func_time)
+
+plt.title("Quicksort Time Plot")
+plt.xlabel("Array Index")
+plt.ylabel("Time")
+plt.plot(time_list, "-b", marker=".")
 plt.show()
