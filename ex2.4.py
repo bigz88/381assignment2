@@ -33,7 +33,7 @@ f = open("ex2.json")
 data = json.load(f)
 
 for i in range(len(data)):
-    func_time = timeit.timeit(lambda : func1(data[i]), number=100)
+    func_time = timeit.timeit(lambda : func1(data[i]), number=10)
     time_list.append(func_time)
 
 plt.title("Quicksort Non-recursive Time Plot")
